@@ -147,13 +147,53 @@
   </div>
 </section>
 
-<section id="teach"><div class="w tg"><div><div class="eye">S3 · Teaching</div><h2>Explaining it until it <em>clicks.</em></h2>
+<section id="teach" aria-labelledby="teaching-title"><div class="w"><div class="tg"><div><div class="eye">S3 · Teaching</div><h2 id="teaching-title">Explaining it until it <em>clicks.</em></h2>
 <p>Since June 2024 I’ve been an IGCSE Mathematics teaching assistant and tutor. I break hard problems into step-by-step methods, build targeted practice, and coach exam technique, time management and which questions to attempt first.</p>
 <p style="margin-top:14px">I also build tools for it: a report-card generator that turns a 3-hour manual job into a 30-second flow for 265 students.</p>
 <a class="btn" href="https://github.com/karimwael45/YA-Report-generator">Report generator repo</a> <a class="btn" href="https://wa.me/qr/3BOTJIRST4HJH1?s=r" target="_blank" rel="noopener">Ask about tutoring</a>
 </div>
 <div class="teaching-results">
-<figure class="rev"><figcaption class="rev-cap">Results from students, in their own words</figcaption><div class="rev-box" id="rv"><img class="on" src="assets/tutoring-result-1.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="194"><img class="" src="assets/tutoring-result-2.jpg" alt="Student message reporting an 8 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="282"><img class="" src="assets/tutoring-result-3.jpg" alt="Student message reporting an A* in IGCSE maths" loading="lazy" decoding="async" width="1170" height="277"><img class="" src="assets/tutoring-result-4.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="329"><img class="" src="assets/tutoring-result-5.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="378"></div><div class="rev-controls" id="rvd" hidden><div class="rev-dots" role="group" aria-label="Student results"><button type="button" aria-label="Show result 1" aria-current="true"></button><button type="button" aria-label="Show result 2"></button><button type="button" aria-label="Show result 3"></button><button type="button" aria-label="Show result 4"></button><button type="button" aria-label="Show result 5"></button></div></div></figure></div></div></section>
+<figure class="rev"><figcaption class="rev-cap">Results from students, in their own words</figcaption><div class="rev-box" id="rv"><img class="on" src="assets/tutoring-result-1.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="194"><img class="" src="assets/tutoring-result-2.jpg" alt="Student message reporting an 8 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="282"><img class="" src="assets/tutoring-result-3.jpg" alt="Student message reporting an A* in IGCSE maths" loading="lazy" decoding="async" width="1170" height="277"><img class="" src="assets/tutoring-result-4.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="329"><img class="" src="assets/tutoring-result-5.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="378"></div><div class="rev-controls" id="rvd" hidden><div class="rev-dots" role="group" aria-label="Student results"><button type="button" aria-label="Show result 1" aria-current="true"></button><button type="button" aria-label="Show result 2"></button><button type="button" aria-label="Show result 3"></button><button type="button" aria-label="Show result 4"></button><button type="button" aria-label="Show result 5"></button></div></div></figure></div></div>
+
+<article class="worksheet" aria-labelledby="worksheet-title">
+  <header class="worksheet-head">
+    <div>
+      <p class="eye">IGCSE Maths · 5 marks</p>
+      <h3 id="worksheet-title">Simultaneous equations</h3>
+    </div>
+    <button type="button" class="worksheet-solve" aria-controls="worksheet-paper" hidden>Solve</button>
+  </header>
+  <div class="worksheet-paper" id="worksheet-paper">
+    <img class="worksheet-blank" src="assets/simultaneous-equations-question.png" width="1600" height="1028" alt="IGCSE simultaneous equations question about the prices of notebooks and pencils. Read the question and worked solution below for the text." loading="lazy" decoding="async">
+    <div class="worksheet-layer worksheet-ink" aria-hidden="true" hidden>
+      <canvas class="worksheet-aligned" width="1599" height="1036"></canvas>
+      <div class="worksheet-aligned">
+        <div class="worksheet-pen-position"><span class="worksheet-pen"></span></div>
+      </div>
+    </div>
+    <div class="worksheet-layer worksheet-reveal" hidden>
+      <img class="worksheet-aligned" src="assets/simultaneous-equations-solution.png" width="1599" height="1036" alt="The same worksheet with the handwritten elimination and substitution steps." loading="lazy" decoding="async">
+    </div>
+    <div class="worksheet-divider" aria-hidden="true" hidden></div>
+    <div class="worksheet-grip" aria-hidden="true" hidden><span>‹</span><span>›</span></div>
+    <input class="worksheet-range" type="range" min="0" max="100" value="0" aria-label="How much of the solved worksheet to show" aria-valuetext="0% solved" hidden>
+  </div>
+  <div class="worksheet-labels" aria-hidden="true" hidden>
+    <span>Solved</span><span>Drag to compare</span><span>Unsolved</span>
+  </div>
+  <p class="worksheet-status" role="status"></p>
+  <details class="worksheet-transcript">
+    <summary>Read the question and worked solution</summary>
+    <p>Three notebooks and four pencils cost $10.80. Five notebooks and two pencils cost $14.50. Find the price of one notebook and one pencil.</p>
+    <ol>
+      <li>Let <i>N</i> be the price of a notebook and <i>P</i> the price of a pencil, in dollars. The equations are <span class="worksheet-math">4<i>P</i> + 3<i>N</i> = 10.80</span> and <span class="worksheet-math">2<i>P</i> + 5<i>N</i> = 14.50</span>.</li>
+      <li>Multiply the second equation by 2 to get <span class="worksheet-math">4<i>P</i> + 10<i>N</i> = 29.00</span>. Subtract that from the first equation to eliminate <i>P</i>. This gives <span class="worksheet-math">−7<i>N</i> = −18.20</span>, so <span class="worksheet-math"><i>N</i> = 2.60</span>.</li>
+      <li>Substitute <span class="worksheet-math"><i>N</i> = 2.60</span> into the first equation. Then <span class="worksheet-math">4<i>P</i> + 7.80 = 10.80</span>, so <span class="worksheet-math">4<i>P</i> = 3.00</span> and <span class="worksheet-math"><i>P</i> = 0.75</span>.</li>
+    </ol>
+    <p><strong>Notebook $2.60 · Pencil $0.75</strong></p>
+  </details>
+</article>
+</div></section>
 
 <section id="ryth" aria-labelledby="rt"><div class="pin" data-pin="v"><div class="stk"><div class="rg">
 <div><div class="eye">S4 · Rythmify</div><h2 id="rt">A music app, built as a team.</h2>
@@ -220,4 +260,5 @@
 <ul><li><a href="https://github.com/karimwael45">GitHub</a></li><li><a href="https://www.linkedin.com/in/karim-ibrahim-2468ab345/">LinkedIn</a></li><li><a href="assets/karim-ibrahim-cv.pdf" download>Download CV</a></li></ul><p class="tag" style="margin-top:40px">© 2026 Karim Ibrahim · Giza, Egypt</p></div></footer>
 </main>
 <script src="project-media.js" defer></script>
-<script src="script.js" defer></script></body></html>
+<script src="script.js" defer></script>
+<script src="worksheet.js" defer></script></body></html>
