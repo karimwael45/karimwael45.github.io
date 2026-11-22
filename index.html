@@ -161,25 +161,35 @@
       <p class="eye">IGCSE Maths · 5 marks</p>
       <h3 id="worksheet-title">Simultaneous equations</h3>
     </div>
-    <button type="button" class="worksheet-solve" aria-controls="worksheet-paper" hidden>Solve</button>
+    <div class="worksheet-actions">
+      <button type="button" class="worksheet-zoom" aria-controls="worksheet-viewport" aria-pressed="false" hidden>Zoom in</button>
+      <button type="button" class="worksheet-solve" aria-controls="worksheet-paper" hidden>Solve</button>
+    </div>
   </header>
-  <div class="worksheet-paper" id="worksheet-paper">
-    <img class="worksheet-blank" src="assets/simultaneous-equations-question.png" width="1600" height="1028" alt="IGCSE simultaneous equations question about the prices of notebooks and pencils. Read the question and worked solution below for the text." loading="lazy" decoding="async">
-    <div class="worksheet-layer worksheet-ink" aria-hidden="true" hidden>
-      <canvas class="worksheet-aligned" width="1599" height="1036"></canvas>
-      <div class="worksheet-aligned">
-        <div class="worksheet-pen-position"><span class="worksheet-pen"></span></div>
+  <div class="worksheet-viewport" id="worksheet-viewport" role="region" aria-label="Worksheet">
+    <div class="worksheet-paper" id="worksheet-paper">
+      <img class="worksheet-blank" src="assets/simultaneous-equations-question.png" width="1600" height="1028" alt="IGCSE simultaneous equations question about the prices of notebooks and pencils. Read the question and worked solution below for the text." loading="lazy" decoding="async">
+      <div class="worksheet-layer worksheet-ink" aria-hidden="true" hidden>
+        <canvas class="worksheet-aligned" width="1599" height="1036"></canvas>
+        <div class="worksheet-aligned">
+          <div class="worksheet-pen-position"><span class="worksheet-pen"></span></div>
+        </div>
       </div>
+      <div class="worksheet-layer worksheet-reveal" hidden>
+        <img class="worksheet-aligned" src="assets/simultaneous-equations-solution.png" width="1599" height="1036" alt="The same worksheet with the handwritten elimination and substitution steps." loading="lazy" decoding="async">
+      </div>
+      <div class="worksheet-divider" aria-hidden="true" hidden></div>
+      <div class="worksheet-grip" aria-hidden="true" hidden><span>‹</span><span>›</span></div>
+      <input class="worksheet-range" type="range" min="0" max="100" value="0" aria-label="How much of the solved worksheet to show" aria-valuetext="0% solved" hidden>
     </div>
-    <div class="worksheet-layer worksheet-reveal" hidden>
-      <img class="worksheet-aligned" src="assets/simultaneous-equations-solution.png" width="1599" height="1036" alt="The same worksheet with the handwritten elimination and substitution steps." loading="lazy" decoding="async">
-    </div>
-    <div class="worksheet-divider" aria-hidden="true" hidden></div>
-    <div class="worksheet-grip" aria-hidden="true" hidden><span>‹</span><span>›</span></div>
-    <input class="worksheet-range" type="range" min="0" max="100" value="0" aria-label="How much of the solved worksheet to show" aria-valuetext="0% solved" hidden>
   </div>
   <div class="worksheet-labels" aria-hidden="true" hidden>
     <span>Solved</span><span>Drag to compare</span><span>Unsolved</span>
+  </div>
+  <div class="worksheet-zoomed-comparison" hidden>
+    <label for="worksheet-zoomed-slider">Drag to compare</label>
+    <input type="range" id="worksheet-zoomed-slider" min="0" max="100" value="0" aria-valuetext="0% solved">
+    <div aria-hidden="true"><span>Unsolved</span><span>Solved</span></div>
   </div>
   <p class="worksheet-status" role="status"></p>
   <details class="worksheet-transcript">

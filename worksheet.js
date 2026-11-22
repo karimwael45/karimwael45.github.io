@@ -4,6 +4,11 @@
 
   const button = lesson.querySelector('.worksheet-solve');
   const paper = lesson.querySelector('.worksheet-paper');
+  const viewport = lesson.querySelector('.worksheet-viewport');
+  const zoomButton = lesson.querySelector('.worksheet-zoom');
+  const zoomedComparison = lesson.querySelector('.worksheet-zoomed-comparison');
+  const zoomedRange = zoomedComparison.querySelector('input');
+  const phone = matchMedia('(max-width: 760px)');
   const drawing = lesson.querySelector('.worksheet-ink');
   const canvas = drawing.querySelector('canvas');
   const penPosition = drawing.querySelector('.worksheet-pen-position');
@@ -38,6 +43,31 @@
   let ink;
   let stage = 'blank';
   let frame = 0;
+  let zoomed = false;
+  let followZoom = false;
+
+  function setZoom(enabled) {
+    zoomed = enabled;
+    lesson.classList.toggle('is-zoomed', enabled);
+    zoomButton.textContent = enabled ? 'Fit page' : 'Zoom in';
+    zoomButton.setAttribute('aria-pressed', String(enabled));
+    if (enabled) viewport.tabIndex = 0;
+    else viewport.removeAttribute('tabindex');
+  }
+
+  function followPen(x, y) {
+    if (!phone.matches || !zoomed) return;
+    const horizontal = x * paper.clientWidth / width;
+    const vertical = y * paper.clientHeight / height;
+    const marginX = viewport.clientWidth * .13;
+    const marginY = viewport.clientHeight * .18;
+    const targetX = Math.max(horizontal - viewport.clientWidth + marginX,
+      Math.min(viewport.scrollLeft, horizontal - marginX));
+    const targetY = Math.max(vertical - viewport.clientHeight + marginY,
+      Math.min(viewport.scrollTop, vertical - marginY));
+    viewport.scrollLeft += (targetX - viewport.scrollLeft) * .31;
+    viewport.scrollTop += (targetY - viewport.scrollTop) * .31;
+  }
 
   function extractInk() {
     const bitmap = document.createElement('canvas');
@@ -95,16 +125,23 @@
 
   function setReveal(value) {
     range.value = value;
+    zoomedRange.value = value;
     paper.style.setProperty('--reveal', value + '%');
     reveal.setAttribute('aria-hidden', String(Number(value) === 0));
     range.setAttribute('aria-valuetext', value + '% solved');
+    zoomedRange.setAttribute('aria-valuetext', value + '% solved');
   }
 
   function compare() {
     cancelAnimationFrame(frame);
     stage = 'compare';
     drawing.hidden = true;
+    if (followZoom) {
+      followZoom = false;
+      setZoom(false);
+    }
     comparison.forEach(element => { element.hidden = false; });
+    zoomedComparison.hidden = false;
     setReveal(100);
     button.textContent = 'Replay';
     status.textContent = 'Solution complete. Drag the slider or use its arrow keys to compare the two worksheets.';
@@ -112,6 +149,7 @@
 
   function movePen(x, y) {
     penPosition.style.transform = `translate3d(${x / width * 100}%, ${y / height * 100}%, 0)`;
+    followPen(x, y);
   }
 
   function penPoint(line, column) {
@@ -130,6 +168,14 @@
     button.textContent = 'Skip animation';
     status.textContent = 'Writing the solution.';
     context.clearRect(0, 0, width, height);
+    if (phone.matches) {
+      if (!zoomed) {
+        followZoom = true;
+        setZoom(true);
+      }
+      const overflow = viewport.getBoundingClientRect().bottom + 12 - innerHeight;
+      if (overflow > 0) window.scrollBy({ top: overflow, behavior: 'smooth' });
+    }
 
     let index = 0;
     let lastPoint = [1400, 232];
@@ -193,6 +239,7 @@
     try {
       await solution.decode();
       comparison.forEach(element => { element.hidden = true; });
+      zoomedComparison.hidden = true;
       setReveal(0);
 
       if (!motion.matches && context && !ink) {
@@ -215,6 +262,12 @@
   }
 
   range.addEventListener('input', () => setReveal(range.value));
+  zoomedRange.addEventListener('input', () => setReveal(zoomedRange.value));
+  zoomButton.addEventListener('click', () => {
+    followZoom = false;
+    setZoom(!zoomed);
+  });
+  zoomButton.hidden = false;
   button.addEventListener('click', solve);
   motion.addEventListener('change', () => {
     if (motion.matches && stage === 'drawing') compare();
