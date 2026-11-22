@@ -47,6 +47,7 @@
   const galleryControls = device.querySelector('.ryth-controls');
   const galleryStatus = device.querySelector('.ryth-view');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileRythmify = matchMedia('(max-width: 760px)');
 
   const projects = document.querySelector('#project-track');
   const projectCards = [...projects.querySelectorAll('.project')];
@@ -103,6 +104,15 @@
   let currentTablet = -1;
   let revealedWordCount = 0;
   let galleryIndex = 0;
+  let galleryTimer;
+  let galleryInView = !('IntersectionObserver' in window);
+
+  function queueGallery() {
+    clearTimeout(galleryTimer);
+    if (mobileRythmify.matches && galleryInView && !reducedMotion.matches && !document.hidden) {
+      galleryTimer = setTimeout(() => showGalleryScreen(galleryIndex + 1), 2500);
+    }
+  }
   let swipeStart;
 
   function showGalleryScreen(index) {
@@ -110,9 +120,11 @@
     selectSlide(steps, galleryIndex);
     selectSlide(phoneScreens, galleryIndex);
     galleryStatus.textContent = steps[galleryIndex].dataset.view + ' · ' + (galleryIndex + 1) + ' of ' + steps.length;
+    queueGallery();
   }
 
-  galleryControls.querySelectorAll('button').forEach(button => {
+  const galleryButtons = [...galleryControls.querySelectorAll('button')];
+  galleryButtons.forEach(button => {
     button.addEventListener('click', () => showGalleryScreen(galleryIndex + Number(button.dataset.shift)));
   });
   phone.addEventListener('pointerdown', event => {
@@ -205,6 +217,8 @@
     root.classList.toggle('motion-desktop', desktopMotion.matches);
     root.classList.toggle('ryth-gallery', !desktopMotion.matches);
     galleryControls.hidden = desktopMotion.matches;
+    galleryButtons.forEach(button => { button.hidden = mobileRythmify.matches; });
+    galleryStatus.setAttribute('aria-live', mobileRythmify.matches ? 'off' : 'polite');
     currentSlide = -1;
     if (desktopMotion.matches) {
       const raceHeight = race.querySelector('.stk').offsetHeight;
@@ -219,6 +233,7 @@
       track.style.transform = '';
       showGalleryScreen(galleryIndex);
     }
+    queueGallery();
     scheduleDraw();
   }
 
@@ -226,6 +241,8 @@
   addEventListener('resize', sizeScenes);
   addEventListener('load', sizeScenes);
   desktopMotion.addEventListener('change', sizeScenes);
+  mobileRythmify.addEventListener('change', sizeScenes);
+  document.addEventListener('visibilitychange', queueGallery);
   document.fonts?.ready.then(sizeScenes);
   sizeScenes();
 
@@ -238,29 +255,26 @@
       });
     }, { threshold: .15 });
     document.querySelectorAll('.rv').forEach(item => reveal.observe(item));
+    const galleryVisibility = new IntersectionObserver(([entry]) => {
+      galleryInView = entry.intersectionRatio >= .12;
+      queueGallery();
+    }, { threshold: .12 });
+    galleryVisibility.observe(phone);
   }
 
   const results = document.querySelector('#rv');
   const resultImages = [...results.querySelectorAll('img')];
   const resultControls = document.querySelector('#rvd');
   const resultButtons = [...resultControls.querySelectorAll('.rev-dots button')];
-  const playback = resultControls.querySelector('.rev-play');
   let resultIndex = 0;
   let rotation;
-  let autoplay = !reducedMotion.matches;
   let resultVisible = !('IntersectionObserver' in window);
 
   function queueResult() {
     clearTimeout(rotation);
-    if (autoplay && resultVisible && !document.hidden) {
-      rotation = setTimeout(() => showResult((resultIndex + 1) % resultImages.length), 10000);
+    if (!reducedMotion.matches && resultVisible && !document.hidden) {
+      rotation = setTimeout(() => showResult((resultIndex + 1) % resultImages.length), 5000);
     }
-  }
-
-  function updatePlayback() {
-    playback.textContent = autoplay ? 'Pause' : 'Play';
-    playback.setAttribute('aria-label', autoplay ? 'Pause student results' : 'Play student results');
-    queueResult();
   }
 
   function showResult(index) {
@@ -274,13 +288,9 @@
   }
 
   resultButtons.forEach((button, i) => button.addEventListener('click', () => showResult(i)));
-  playback.addEventListener('click', () => {
-    autoplay = !autoplay;
-    updatePlayback();
-  });
   reducedMotion.addEventListener('change', () => {
-    if (reducedMotion.matches) autoplay = false;
-    updatePlayback();
+    queueResult();
+    queueGallery();
     scheduleDraw();
   });
   document.addEventListener('visibilitychange', queueResult);
@@ -288,7 +298,6 @@
   showResult(0);
   results.classList.add('is-carousel');
   resultControls.hidden = false;
-  updatePlayback();
   if ('IntersectionObserver' in window) {
     const visibility = new IntersectionObserver(([entry]) => {
       resultVisible = entry.isIntersecting;
@@ -299,36 +308,21 @@
 
   const dialog = document.querySelector('#lb');
   const previewImage = dialog.querySelector('#lbi');
-  const previewVideo = dialog.querySelector('#lb-video');
   const previewTitle = dialog.querySelector('#lbt');
   const verifyLink = dialog.querySelector('#lbv');
 
   if (typeof dialog.showModal === 'function') {
-    document.querySelectorAll('.zoom, [data-preview]').forEach(link => {
+    document.querySelectorAll('.zoom').forEach(link => {
       link.addEventListener('click', event => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
-        const isVideo = link.dataset.preview === 'video';
-        previewImage.hidden = isVideo;
-        previewVideo.hidden = !isVideo;
-        if (isVideo) {
-          previewVideo.src = link.href;
-        } else {
-          previewImage.src = link.href;
-          previewImage.alt = link.dataset.alt ?? link.querySelector('img').alt;
-        }
+        previewImage.src = link.href;
+        previewImage.alt = link.querySelector('img').alt;
         previewTitle.textContent = link.dataset.t;
         if (link.dataset.v) verifyLink.href = link.dataset.v;
         verifyLink.hidden = !link.dataset.v;
         dialog.showModal();
-        if (isVideo) previewVideo.play().catch(() => {});
       });
-    });
-    dialog.addEventListener('close', () => {
-      if (!previewVideo.hasAttribute('src')) return;
-      previewVideo.pause();
-      previewVideo.removeAttribute('src');
-      previewVideo.load();
     });
     dialog.querySelector('#lbx').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', event => {

@@ -71,100 +71,77 @@
       </div>
     </div>
     <div class="project-track" id="project-track" role="region" aria-label="Project cards" tabindex="0">
-      <article class="project">
-        <div class="project-visual dashboard-visual">
-          <img src="assets/testing-assistant.webp" alt="Inspection dashboard showing selectable page findings and expanded locator evidence from a sample inspection" width="1180" height="790" loading="lazy" decoding="async">
-        </div>
-        <div class="project-body">
-          <p class="tag">FastAPI · JavaScript · Playwright</p>
-          <h3>Human-in-the-Loop Web Testing Assistant</h3>
-          <p>I built the dashboard where testers select page elements, review the locator evidence, and ask for a testing suggestion based on their selection.</p>
-          <a class="project-link" href="https://github.com/karimwael45/Genrative-AI-for-Software-Testing/tree/M2-Web">View my dashboard branch</a>
-        </div>
-      </article>
-      <article class="project">
-        <div class="project-visual app-visual">
-          <img src="assets/rythmify-profile.jpg" alt="Rythmify profile screen with an avatar, follower counts, and playlist tabs" loading="lazy" decoding="async" width="360" height="800">
-          <img src="assets/rythmify-library.jpg" alt="Rythmify library screen with collections and playlists" loading="lazy" decoding="async" width="360" height="800">
-        </div>
-        <div class="project-body">
-          <p class="tag">Flutter · Riverpod · REST API</p>
-          <h3>Rythmify</h3>
-          <p>I built the authentication, profile, and library modules for a team-built music streaming app on Android and Windows.</p>
-          <div class="project-links">
-            <a class="project-link" href="#ryth">See my contributions</a>
-            <a class="project-link" href="assets/rythmify-walkthrough.webm">Watch the screen walkthrough</a>
+      <article class="project" id="project-testing-assistant">
+        <a class="project-card" href="projects/testing-assistant.html" aria-labelledby="project-title-testing-assistant">
+          <div class="project-visual">
+            <img src="assets/testing-assistant.webp" alt="Dashboard showing selectable page elements, candidate locators, and a testing goal" width="1180" height="790" loading="lazy" decoding="async">
           </div>
-        </div>
-      </article>
-      <article class="project">
-        <a class="project-visual project-photo" href="assets/password-manager-web.png" data-preview data-t="Secure Password Manager web interface">
-          <img src="assets/password-manager-web.png" alt="Open the Streamlit screen for transferring an encrypted vault" width="1280" height="600" loading="lazy" decoding="async">
-        </a>
-        <div class="project-body">
-          <p class="tag">Python · AES-256-GCM · ElGamal · Diffie-Hellman · Streamlit · May 2026</p>
-          <h3>Secure Password Manager</h3>
-          <p>A vault encrypted with AES-256-GCM, with a SHA-256 hash used to verify the master password. I implemented ElGamal signatures to detect tampering and used ephemeral Diffie-Hellman keys for transfers. The project has a CLI and a Streamlit UI.</p>
-          <p class="cli-result"><b>CLI transfer</b><br>Session key ready<br>Device2: transfer verified<br>Device2: import done</p>
-        </div>
-      </article>
-      <article class="project">
-        <a class="project-visual project-photo" href="assets/processor-one-operand.png" data-preview data-t="Processor simulation · One-operand test">
-          <img src="assets/processor-one-operand.png" alt="Open the ModelSim waveform and register state from a one-operand processor test" width="1280" height="676" loading="lazy" decoding="async">
-        </a>
-        <div class="project-body">
-          <p class="tag">VHDL</p>
-          <h3>6-stage Pipelined CPU</h3>
-          <div class="pipe" aria-hidden="true"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b></div>
-          <p>Runs custom assembly with interrupt handling and hazard prevention. Writing memory on the rising edge and reading it on the falling edge resolved a structural hazard and removed the resulting stalls.</p>
-          <a class="project-link" href="assets/processor-two-operand.png" data-preview data-t="Processor simulation · Two-operand test" data-alt="ModelSim waveform and final register state from a two-operand processor test">Two-operand simulation</a>
-        </div>
-      </article>
-      <article class="project">
-        <a class="project-visual project-photo" href="assets/embedded-wall-follower.mp4" data-preview="video" data-t="Embedded Wall Follower demo">
-          <img src="assets/embedded-wall-follower.webp" alt="Play the demo of the robot navigating a cardboard-wall track" width="432" height="768" loading="lazy" decoding="async">
-        </a>
-        <div class="project-body">
-          <p class="tag">Embedded C · Distance sensors · Finite state machine</p>
-          <h3>Embedded Wall Follower</h3>
-          <p>An autonomous robot that follows walls using distance sensors. Its state machine handles sharp turns and keeps counts of left and right turns for verification.</p>
-          <a class="project-link" href="https://github.com/HayaNaggar/Embedded-wall-follower">View repository</a>
-        </div>
-      </article>
-      <article class="project project-text">
-        <div class="project-body">
-          <p class="tag">C# · SQL Server · Dec 2025</p>
-          <h3>RideSync</h3>
-          <p>A transit database of 15 tables and 4 user roles, with a WinForms MVC app for booking, payments, incident reports and analytics.</p>
-        </div>
-      </article>
-      <article class="project project-text">
-        <div class="project-body">
-          <p class="tag">Java · Sockets · May 2025</p>
-          <h3>Collaborative Editor</h3>
-          <p>Real-time shared editing using CRDTs for conflict-free merging and eventual consistency.</p>
-        </div>
-      </article>
-      <article class="project">
-        <a class="project-visual project-photo" href="assets/report-dashboard-demo.webp" data-preview data-t="Report generator dashboard · Demo data">
-          <img src="assets/report-dashboard-demo.webp" alt="Open the report generator dashboard populated with fictional student records" width="1280" height="690" loading="lazy" decoding="async">
-        </a>
-        <div class="project-body">
-          <p class="tag">Flask · ReportLab · Railway · Apr 2026</p>
-          <h3>Report Card Generator</h3>
-          <p>Generates individual student PDFs from CSV files in seconds using the official report template.</p>
-          <div class="project-links">
-            <a class="project-link" href="assets/report-recommendations-demo.webp" data-preview data-t="Report recommendations · Demo data" data-alt="Form for editing recommendations and feedback for a fictional student">Recommendations screen</a>
-            <a class="project-link" href="https://github.com/karimwael45/YA-Report-generator">View repository</a>
+          <div class="project-body">
+            <p class="tag">FastAPI · JavaScript · Playwright</p>
+            <h3 id="project-title-testing-assistant">Human-in-the-Loop Web Testing Assistant <span aria-hidden="true">↗</span></h3>
+            <p>I built the dashboard where testers select page elements, review the locator evidence, and ask for a testing suggestion based on their selection.</p>
           </div>
-        </div>
+        </a>
       </article>
-      <article class="project project-text">
-        <div class="project-body">
-          <p class="tag">C · Mar 2025</p>
-          <h3>Scheduling Simulator</h3>
-          <p>SRTF and Round Robin with dynamic ready queues, context switching and performance metrics.</p>
-        </div>
+      <article class="project" id="project-rythmify">
+        <a class="project-card" href="projects/rythmify.html" aria-labelledby="project-title-rythmify">
+          <div class="project-visual project-visual--phones">
+            <img src="assets/rythmify-profile.jpg" alt="Rythmify profile screen with avatar, cover image, and follower counts" width="360" height="800" loading="lazy" decoding="async">
+            <img src="assets/rythmify-library.jpg" alt="Rythmify library screen showing reposts and playlists" width="360" height="800" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <p class="tag">Flutter · Riverpod · REST API</p>
+            <h3 id="project-title-rythmify">Rythmify <span aria-hidden="true">↗</span></h3>
+            <p>I built the authentication, profile, and library modules for a team-built music streaming app on Android and Windows.</p>
+          </div>
+        </a>
+      </article>
+      <article class="project" id="project-password-manager">
+        <a class="project-card" href="projects/password-manager.html" aria-labelledby="project-title-password-manager">
+          <div class="project-visual">
+            <img src="assets/password-manager-web.png" alt="Streamlit interface for transferring an encrypted vault with a masked password field" width="1280" height="600" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <p class="tag">Python · Streamlit · Applied cryptography</p>
+            <h3 id="project-title-password-manager">Secure Password Manager <span aria-hidden="true">↗</span></h3>
+            <p>An encrypted vault with a command-line interface, a Streamlit UI, and support for transferring the vault between devices.</p>
+          </div>
+        </a>
+      </article>
+      <article class="project" id="project-pipelined-cpu">
+        <a class="project-card" href="projects/pipelined-cpu.html" aria-labelledby="project-title-pipelined-cpu">
+          <div class="project-visual">
+            <img src="assets/processor-one-operand.png" alt="ModelSim waveforms and final register state for a one-operand processor test" width="1280" height="676" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <p class="tag">VHDL · ModelSim</p>
+            <h3 id="project-title-pipelined-cpu">6-stage Pipelined CPU <span aria-hidden="true">↗</span></h3>
+            <p>A six-stage processor that runs custom assembly and handles interrupts and pipeline hazards.</p>
+          </div>
+        </a>
+      </article>
+      <article class="project project--video" id="project-embedded-wall-follower">
+        <a class="project-card" href="projects/embedded-wall-follower.html" aria-labelledby="project-title-embedded-wall-follower">
+          <video id="robot-preview" class="project-video" data-autoplay data-src="assets/embedded-wall-follower.mp4" poster="assets/embedded-wall-follower.webp" muted playsinline loop preload="none" aria-hidden="true"></video>
+          <div class="project-body">
+            <p class="tag">Embedded C · Distance sensors · Finite state machine</p>
+            <h3 id="project-title-embedded-wall-follower">Embedded Wall Follower <span aria-hidden="true">↗</span></h3>
+            <p>An autonomous robot that follows walls, handles sharp turns, and counts left and right turns.</p>
+          </div>
+        </a>
+        <button type="button" class="project-video-toggle" data-video-toggle aria-controls="robot-preview" hidden>Pause video</button>
+      </article>
+      <article class="project" id="project-report-card-generator">
+        <a class="project-card" href="projects/report-card-generator.html" aria-labelledby="project-title-report-card-generator">
+          <div class="project-visual">
+            <img src="assets/report-dashboard-demo.webp" alt="Report generator dashboard with fictional student data, grade summaries, and attendance figures" width="1280" height="690" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <p class="tag">Flask · ReportLab · Railway</p>
+            <h3 id="project-title-report-card-generator">Report Card Generator <span aria-hidden="true">↗</span></h3>
+            <p>I built a tool that turns CSV exports into individual maths reports, cutting a three-hour workflow to about 30 seconds for 265 students.</p>
+          </div>
+        </a>
       </article>
     </div>
   </div>
@@ -175,8 +152,8 @@
 <p style="margin-top:14px">I also build tools for it: a report-card generator that turns a 3-hour manual job into a 30-second flow for 265 students.</p>
 <a class="btn" href="https://github.com/karimwael45/YA-Report-generator">Report generator repo</a> <a class="btn" href="https://wa.me/qr/3BOTJIRST4HJH1?s=r" target="_blank" rel="noopener">Ask about tutoring</a>
 </div>
-<div><svg id="geo" viewBox="0 0 400 400" role="img" aria-label="Circle theorem diagram drawing itself: the angle at the centre is twice the angle at the circumference"><circle cx="200" cy="200" r="150" pathLength="1"/><path class="a" d="M200 200 L70 125 M200 200 L330 125" pathLength="1"/><path d="M70 125 L200 350 L330 125" pathLength="1"/><path d="M70 125 L330 125" pathLength="1"/><text x="170" y="180">2θ</text><text x="188" y="322">θ</text><text x="40" y="112">A</text><text x="340" y="112">B</text><text x="196" y="376">C</text></svg>
-<figure class="rev"><p class="rev-cap">Results from students, in their own words</p><div class="rev-box" id="rv"><img class="on" src="assets/tutoring-result-1.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="194"><img class="" src="assets/tutoring-result-2.jpg" alt="Student message reporting an 8 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="282"><img class="" src="assets/tutoring-result-3.jpg" alt="Student message reporting an A* in IGCSE maths" loading="lazy" decoding="async" width="1170" height="277"><img class="" src="assets/tutoring-result-4.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="329"><img class="" src="assets/tutoring-result-5.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="378"></div><div class="rev-controls" id="rvd" hidden><button class="rev-play" type="button" aria-controls="rv">Pause</button><div class="rev-dots" role="group" aria-label="Student results"><button type="button" aria-label="Show result 1" aria-current="true"></button><button type="button" aria-label="Show result 2"></button><button type="button" aria-label="Show result 3"></button><button type="button" aria-label="Show result 4"></button><button type="button" aria-label="Show result 5"></button></div></div></figure></div></div></section>
+<div class="teaching-results">
+<figure class="rev"><figcaption class="rev-cap">Results from students, in their own words</figcaption><div class="rev-box" id="rv"><img class="on" src="assets/tutoring-result-1.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="194"><img class="" src="assets/tutoring-result-2.jpg" alt="Student message reporting an 8 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="282"><img class="" src="assets/tutoring-result-3.jpg" alt="Student message reporting an A* in IGCSE maths" loading="lazy" decoding="async" width="1170" height="277"><img class="" src="assets/tutoring-result-4.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="329"><img class="" src="assets/tutoring-result-5.jpg" alt="Student message reporting a 9 in IGCSE maths" loading="lazy" decoding="async" width="1170" height="378"></div><div class="rev-controls" id="rvd" hidden><div class="rev-dots" role="group" aria-label="Student results"><button type="button" aria-label="Show result 1" aria-current="true"></button><button type="button" aria-label="Show result 2"></button><button type="button" aria-label="Show result 3"></button><button type="button" aria-label="Show result 4"></button><button type="button" aria-label="Show result 5"></button></div></div></figure></div></div></section>
 
 <section id="ryth" aria-labelledby="rt"><div class="pin" data-pin="v"><div class="stk"><div class="rg">
 <div><div class="eye">S4 · Rythmify</div><h2 id="rt">A music app, built as a team.</h2>
@@ -234,11 +211,12 @@
 <figure class="ct rv"><a class="zoom" href="assets/certificate-google-ai.jpg" data-t="Introduction to Generative AI" aria-label="Enlarge certificate: Introduction to Generative AI"><img src="assets/certificate-google-ai.jpg" alt="Google Cloud completion badge: Introduction to Generative AI" loading="lazy" decoding="async" width="741" height="680"></a><figcaption><time>OCT 2026</time><b>Introduction to Generative AI</b><small>Google Cloud</small></figcaption></figure>
 <figure class="ct rv"><a class="zoom" href="assets/certificate-embs.jpg" data-t="Data Analysis and AI: AI module" aria-label="Enlarge certificate: Data Analysis and AI: AI module"><img src="assets/certificate-embs.jpg" alt="IEEE EMBS Cairo University Student Branch certificate of appreciation for the AI module" loading="lazy" decoding="async" width="900" height="636"></a><figcaption><time>FEB 2025</time><b>Data Analysis and AI: AI module</b><small>IEEE EMBS Cairo University Student Branch</small></figcaption></figure>
 </div></div></section>
-<dialog id="lb" aria-labelledby="lbt"><button id="lbx" aria-label="Close">×</button><img id="lbi" alt=""><video id="lb-video" controls playsinline preload="none" hidden aria-label="Embedded Wall Follower demonstration"></video><p><span id="lbt"></span> <a id="lbv" hidden>Verify</a></p></dialog>
+<dialog id="lb" aria-labelledby="lbt"><button id="lbx" aria-label="Close">×</button><img id="lbi" alt=""><p><span id="lbt"></span> <a id="lbv" hidden>Verify</a></p></dialog>
 
 
 
 <footer id="contact"><div class="w"><div class="eye">Finish line</div><h2>Let’s build something.</h2><a class="em" href="mailto:karim.WI@outlook.com">karim.WI@outlook.com</a>
 <ul><li><a href="https://github.com/karimwael45">GitHub</a></li><li><a href="https://www.linkedin.com/in/karim-ibrahim-2468ab345/">LinkedIn</a></li><li><a href="assets/karim-ibrahim-cv.pdf" download>Download CV</a></li></ul><p class="tag" style="margin-top:40px">© 2026 Karim Ibrahim · Giza, Egypt</p></div></footer>
 </main>
+<script src="project-media.js" defer></script>
 <script src="script.js" defer></script></body></html>

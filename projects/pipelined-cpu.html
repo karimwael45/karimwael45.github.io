@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A six-stage processor that runs custom assembly and handles interrupts and pipeline hazards.">
+  <title>6-stage Pipelined CPU | Karim Ibrahim</title>
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="wordmark" href="../index.html" aria-label="Karim Ibrahim, home">KI<span>.</span></a>
+      <a href="../index.html#project-pipelined-cpu" class="project-back">← Selected projects</a>
+    </div>
+  </header>
+  <main class="project-detail w">
+    <header class="project-detail-intro">
+      <p class="eye">VHDL · ModelSim</p>
+      <h1>6-stage Pipelined CPU</h1>
+      <p>A six-stage processor that runs custom assembly and handles interrupts and pipeline hazards.</p>
+    </header>
+    <div class="project-shots">
+      <figure>
+        <a class="detail-image" href="../assets/processor-one-operand.png">
+          <img src="../assets/processor-one-operand.png" alt="ModelSim waveforms and final register state for a one-operand processor test" width="1280" height="676" decoding="async">
+        </a>
+        <figcaption>One-operand simulation</figcaption>
+      </figure>
+      <figure>
+        <a class="detail-image" href="../assets/processor-two-operand.png">
+          <img src="../assets/processor-two-operand.png" alt="ModelSim waveforms and final register state for a two-operand processor test" width="1280" height="720" loading="lazy" decoding="async">
+        </a>
+        <figcaption>Two-operand simulation</figcaption>
+      </figure>
+    </div>
+    <section class="project-detail-copy">
+      <h2>Resolving a memory hazard</h2><p>Writing memory on the rising clock edge and reading it on the falling edge removed stalls caused by a structural hazard. The ModelSim captures show the signals and final register values for each test.</p>
+    </section>
+  </main>
+</body>
+</html>
