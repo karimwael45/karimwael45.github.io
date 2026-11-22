@@ -677,65 +677,13 @@ body { padding-top: 0; background-color: var(--ribbon-bg); }
 .worksheet-transcript li + li { margin-top: 8px; }
 .worksheet-math { white-space: nowrap; }
 
-.worksheet-actions { display: flex; align-items: center; gap: 8px; }
-.worksheet-zoom,
-.worksheet-zoomed-comparison { display: none; }
-
 @media (max-width: 760px) {
   .worksheet { margin-inline: -10px; }
   .worksheet-head {
     flex-wrap: wrap;
-    align-items: center;
     gap: 10px 14px;
   }
   .worksheet h3 { font-size: clamp(1.8rem, 6vw, 2.8rem); }
-  .worksheet-zoom {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 8px 12px;
-    border: 1px solid var(--fg);
-    border-radius: 3px;
-    color: var(--fg);
-    background: transparent;
-    font: 700 .68rem/1.3 var(--mono);
-    cursor: pointer;
-  }
-  .worksheet-zoom[aria-pressed="true"] { background: #e5ddd1; }
-  .worksheet.is-zoomed .worksheet-viewport {
-    overflow: auto;
-    max-height: min(56svh, 425px);
-    overscroll-behavior-inline: contain;
-    scrollbar-color: #8792a8 #f7f2e9;
-    border: 1px solid #9d9183;
-    border-radius: 5px;
-  }
-  .worksheet.is-zoomed .worksheet-viewport:focus-visible { outline: 3px solid var(--ac); outline-offset: 2px; }
-  .worksheet.is-zoomed .worksheet-paper {
-    min-width: 700px;
-    border: 0;
-    border-radius: 0;
-  }
-  .worksheet.is-zoomed :is(.worksheet-range, .worksheet-grip, .worksheet-labels) { display: none; }
-  .worksheet.is-zoomed .worksheet-zoomed-comparison {
-    display: grid;
-    margin-top: 10px;
-    font-size: .86rem;
-  }
-  .worksheet-zoomed-comparison label { font-weight: 700; }
-  .worksheet-zoomed-comparison input {
-    width: 100%;
-    min-height: 44px;
-    margin: 0;
-    accent-color: #1a35a1;
-  }
-  .worksheet-zoomed-comparison > div {
-    display: flex;
-    justify-content: space-between;
-    color: #66594c;
-    font: 400 .7rem var(--mono);
-  }
 }
 
 /* Testimonial and certificate controls */
